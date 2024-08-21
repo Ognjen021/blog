@@ -1,0 +1,30 @@
+const express = require('express');
+const app = express();
+const port = 3000;
+
+// Sample JSON data
+const blogData = {
+    "categoryId": 1,
+    "publishAt": "2025-01-01",
+    "coverImageUrl": "url",
+    "content": [
+        {
+            "languageCode": "en",
+            "title": "Nurturing Nature Indoors and Beyond with Smart Insights",
+            "body": [
+                { "type": "text", "content": "In today's fast-paced world, fostering a connection with nature is more important than ever." },
+                { "type": "richText", "content": "As **urbanization** continues to rise, many of us find ourselves living in environments that are increasingly disconnected from the natural world." },
+                { "type": "heading", "content": "About" },
+                { "type": "image", "content": "s3BucketUrl" }
+            ]
+        }
+    ]
+};
+
+app.get('/api/blog', (req, res) => {
+    res.json(blogData);
+});
+
+app.listen(port, () => {
+    console.log(`API listening at http://localhost:${port}`);
+});
